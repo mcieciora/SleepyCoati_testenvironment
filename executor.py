@@ -1,9 +1,13 @@
 import os
 import unittest
+import xmlrunner
 
+# Jenkins variables
 scope = os.getenv('scope')
 
+# Project paths
 base_path = os.getcwd()
+
 
 patterns_list = ['smoke_*.py', 'test_*.py']
 if scope == 'smoke':
@@ -20,5 +24,5 @@ def discover_test_cases():
     return test_suite
 
 
-runner = unittest.TextTestRunner(verbosity=3)
+runner = xmlrunner.XMLTestRunner(output='TestResults')
 result = runner.run(discover_test_cases())
