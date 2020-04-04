@@ -1,0 +1,5 @@
+#d variable_name 1
+#s variable_name
+#s variable_bool 1
+#g True
+#g 2 next_variable
