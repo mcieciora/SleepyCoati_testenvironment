@@ -16,7 +16,7 @@ class Test(unittest.TestCase):
             'test_value_evaluation_basic_value'
 
     def test_value_evaluation_empty_strings(self):
-        self.assertEqual(reader.value_evaluation(self.expression_list_empty_strings), ['', '']), \
+        self.assertEqual(reader.value_evaluation(self.expression_list_empty_strings), []), \
             'test_value_evaluation_empty_strings'
 
     def test_value_evaluation_empty_list(self):

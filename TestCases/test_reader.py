@@ -33,8 +33,3 @@ class Test(unittest.TestCase):
         return_value = [vars(x) for x in reader.read_co_file(join('TestData', 'example_multi_spaces.co'))]
         self.assertEqual(return_value, [vars(x) for x in self.expected_expression_list]), \
             'test_read_co_file_multi_spaces'
-
-    def test_read_co_file_example_wrong_command_usage(self):
-        return_value = [vars(x) for x in reader.read_co_file(join('TestData', 'example_wrong_command_usage.co'))]
-        self.assertEqual(return_value, []), \
-            'test_read_co_file_example_wrong_command_usage'
