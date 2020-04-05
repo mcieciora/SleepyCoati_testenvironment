@@ -14,16 +14,19 @@ class Test(unittest.TestCase):
         ]
 
     def test_build_command_list_simple(self):
-        return_value = [vars(x) for x in parser.build_command_list(join('TestData', 'example_simple.co'))]
+        return_value = [vars(x) for x in parser.build_command_list(join('TestData', 'example_simple.co'),
+                                                                   join('TestData', 'command.xml'))]
         self.assertEqual(return_value, [vars(x) for x in self.example_simple]), \
             'test_build_command_list_simple'
 
     def test_build_command_list_simple_mix(self):
-        return_value = [vars(x) for x in parser.build_command_list(join('TestData', 'example_simple_mix.co'))]
+        return_value = [vars(x) for x in parser.build_command_list(join('TestData', 'example_simple_mix.co'),
+                                                                   join('TestData', 'command.xml'))]
         self.assertEqual(return_value, [vars(x) for x in self.expected_expression_list]), \
             'test_build_command_list_simple_mix'
 
     def test_build_command_list_wrong_command_usage(self):
-        return_value = [vars(x) for x in parser.build_command_list(join('TestData', 'example_wrong_command_usage.co'))]
+        return_value = [vars(x) for x in parser.build_command_list(join('TestData', 'example_wrong_command_usage.co'),
+                                                                   join('TestData', 'command.xml'))]
         self.assertEqual(return_value, []), \
             'test_build_command_list_wrong_command_usage'
