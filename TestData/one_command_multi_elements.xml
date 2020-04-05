@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<commands>
+    <command>
+        <structure>#s</structure>
+        <name>set_variable</name>
+        <usage_pattern>
+            <element>str</element>
+            <element>int</element>
+        </usage_pattern>
+    </command>
+</commands>
