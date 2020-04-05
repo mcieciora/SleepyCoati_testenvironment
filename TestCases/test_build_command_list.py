@@ -1,17 +1,16 @@
 import unittest
 from os.path import join
 from app import parser
-from app.Expression import Expression
+from app.Command import Command
 
 
 class Test(unittest.TestCase):
     def setUp(self) -> None:
-        self.example_simple = [Expression('#s', ['variable_name', 5])]
+        self.example_simple = [Command('#s', 'set_variable', [str, int], ['variable_name', 5])]
         self.expected_expression_list = [
-            Expression('#d', ['variable_name']),
-            Expression('#s', ['variable_name', 5]),
-            Expression('#s', ['variable_bool', True])
-        ]
+            Command('#d', 'define_variable', [str], ['variable_name']),
+            Command('#s', 'set_variable', [str, int], ['variable_name', 5])
+            ]
 
     def test_build_command_list_simple(self):
         return_value = [vars(x) for x in parser.build_command_list(join('TestData', 'example_simple.co'),
@@ -26,7 +25,6 @@ class Test(unittest.TestCase):
             'test_build_command_list_simple_mix'
 
     def test_build_command_list_wrong_command_usage(self):
-        return_value = [vars(x) for x in parser.build_command_list(join('TestData', 'example_wrong_command_usage.co'),
-                                                                   join('TestData', 'command.xml'))]
-        self.assertEqual(return_value, []), \
-            'test_build_command_list_wrong_command_usage'
+        return_value = parser.build_command_list(join('TestData', 'example_wrong_command_usage.co'),
+                                                 join('TestData', 'command.xml'))
+        self.assertEqual(len(return_value), 0), 'test_build_command_list_wrong_command_usage'
