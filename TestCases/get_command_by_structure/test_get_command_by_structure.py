@@ -8,6 +8,8 @@ from app.Command import Command
 
 class Test(unittest.TestCase):
     def setUp(self) -> None:
+        self.empty_parser = Parser(None, join(getenv('WORKSPACE'), 'TestCases', 'get_command_by_structure',
+                                              'empty_command.xml'))
         self.parser_basic = Parser(None, join(getenv('WORKSPACE'), 'TestCases', 'get_command_by_structure',
                                               'command.xml'))
         self.parser_multiset = Parser(None, join(getenv('WORKSPACE'), 'TestCases', 'get_command_by_structure',
@@ -36,3 +38,7 @@ class Test(unittest.TestCase):
         parser_command = [vars(x) for x in self.parser_multiset.get_command_by_structure('#s')]
         self.assertEqual(parser_command, [vars(x) for x in self.multi_set]), \
             'test_get_command_by_structure_basic_value'
+
+    def test_get_command_by_structure_empty_xml_file(self):
+        self.assertEqual(self.empty_parser.get_command_by_structure('#s'), []), \
+            'test_get_command_by_structure_empty_xml_file'

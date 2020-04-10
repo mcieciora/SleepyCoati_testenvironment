@@ -1,7 +1,5 @@
 import unittest
 from app.Parser import Parser
-from os.path import join
-from os import getenv
 
 
 class Test(unittest.TestCase):
