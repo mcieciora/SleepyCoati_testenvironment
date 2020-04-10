@@ -1,5 +1,7 @@
 import unittest
 from app.Parser import Parser
+from os.path import join
+from os import getenv
 
 
 class Test(unittest.TestCase):
@@ -13,7 +15,8 @@ class Test(unittest.TestCase):
             'test_get_list_elements_type_empty_list'
 
     def test_get_list_elements_type_str_value(self):
-        self.assertEqual(Parser(self.expression_list_str, 'command.xml'), [str]), \
+        self.assertEqual(Parser(self.expression_list_str, join(getenv('WORKSPACE'), 'TestCases',
+                                                               'get_list_elements_type', 'command.xml')), [str]), \
             'test_get_list_elements_type_str_value'
 
     def test_get_list_elements_type_int_value(self):

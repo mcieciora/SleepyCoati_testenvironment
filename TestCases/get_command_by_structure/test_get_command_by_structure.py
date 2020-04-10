@@ -9,7 +9,8 @@ from app.Command import Command
 class Test(unittest.TestCase):
     def setUp(self) -> None:
         self.parser_basic = Parser(None, join(getenv('WORKSPACE'), 'TestCases', 'build_command_list', 'command.xml'))
-        self.parser_multiset = Parser(None, 'command_multi_set.xml')
+        self.parser_multiset = Parser(None, join(getenv('WORKSPACE'), 'TestCases', 'build_command_list',
+                                                 'command_multi_set.xml'))
         self.basic_command = [Command('#s', 'set_variable', [str, int])]
         self.multi_set = [
             Command('#s', 'set_variable', [str, int]),
