@@ -1,4 +1,4 @@
-from os import getcwd, listdir
+from os import getcwd, environ
 from os.path import join
 from sys import path
 import unittest
@@ -6,14 +6,16 @@ import xmlrunner
 
 # Project paths
 base_path = getcwd()
-
+components = environ['components']
+print(components)
 path.insert(0, join(base_path, 'app'))
 
 
 def discover_test_cases():
     test_loader = unittest.TestLoader()
     test_suite = unittest.TestSuite()
-    test_suite.addTest(test_loader.discover(join(base_path, 'TestCases'), 'test_*.py'))
+    for component in components:
+        test_suite.addTest(test_loader.discover(join(base_path, 'TestCases', component), 'test_*.py'))
     return test_suite
 
 
