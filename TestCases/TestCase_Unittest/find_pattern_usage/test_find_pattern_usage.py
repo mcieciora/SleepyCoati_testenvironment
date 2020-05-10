@@ -9,9 +9,10 @@ from app.Command import Command
 @unittest.skipIf(getenv('scope') == 'smoke', 'Skipping {}'.format(__file__))
 class Test(unittest.TestCase):
     def setUp(self) -> None:
-        self.parser = Parser(None, join(getenv('WORKSPACE'), 'TestCases', 'find_pattern_usage', 'command.xml'))
+        self.parser = Parser(None, join(getenv('WORKSPACE'), 'TestCases', 'find_pattern_usage', 'TestCase_Unittest',
+                                        'command.xml'))
         self.empty_parser = Parser(None, join(getenv('WORKSPACE'), 'TestCases', 'find_pattern_usage',
-                                              'empty_command.xml'))
+                                              'TestCase_Unittest', 'empty_command.xml'))
         self.expression_basic = Expression('#d', ['variable_name'])
         self.expression_multi_value = Expression('#s', ['variable', 2])
         self.expression_out_of_scope = Expression('#a', ['variable'])

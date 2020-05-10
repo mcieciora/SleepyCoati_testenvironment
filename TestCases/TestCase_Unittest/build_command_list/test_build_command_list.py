@@ -9,7 +9,8 @@ from app.Expression import Expression
 @unittest.skipIf(getenv('scope') == 'smoke', 'Skipping {}'.format(__file__))
 class Test(unittest.TestCase):
     def setUp(self) -> None:
-        self.parser = Parser(None, join(getenv('WORKSPACE'), 'TestCases', 'build_command_list', 'command.xml'))
+        self.parser = Parser(None, join(getenv('WORKSPACE'), 'TestCases', 'TestCase_Unittest', 'build_command_list',
+                                        'command.xml'))
         self.read_co_simple = [Expression('#s', ['variable', 5])]
         self.read_co_simple_expected = [Command('#s', 'set_variable', [str, int], ['variable', 5])]
         self.read_co_mix = [
