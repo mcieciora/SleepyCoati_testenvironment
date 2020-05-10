@@ -14,31 +14,28 @@ class Test(unittest.TestCase):
                                            Command('#g', 'get_variable', [str])]
         self.multi_commands_multi_elements = [Command('#c', 'test_variable', [str, int]),
                                               Command('#f', 'f_variable', [int, str])]
+        self.xmls_path = join(getenv('WORKSPACE'), 'TestCases', 'TestCase_Unittest', 'generate_all_commands_list')
 
     def test_generate_all_commands_list_one_command_one_element(self):
-        ret_val = [vars(x) for x in xml_parser.generate_all_commands_list(join(getenv('WORKSPACE'), 'TestCases',
-                                                                               'generate_all_commands_list',
+        ret_val = [vars(x) for x in xml_parser.generate_all_commands_list(join(self.xmls_path,
                                                                                'one_command_one_element.xml'))]
         self.assertEqual(ret_val, [vars(x) for x in self.one_command_one_element]), \
             'test_generate_all_commands_list_one_command_one_element'
 
     def test_generate_all_commands_list_one_command_multi_elements(self):
-        ret_val = [vars(x) for x in xml_parser.generate_all_commands_list(join(getenv('WORKSPACE'), 'TestCases',
-                                                                               'generate_all_commands_list',
+        ret_val = [vars(x) for x in xml_parser.generate_all_commands_list(join(self.xmls_path,
                                                                                'one_command_multi_elements.xml'))]
         self.assertEqual(ret_val, [vars(x) for x in self.one_command_multi_elements]), \
             'test_generate_all_commands_list_one_command_multi_elements'
 
     def test_generate_all_commands_list_multi_commands_one_element(self):
-        ret_val = [vars(x) for x in xml_parser.generate_all_commands_list(join(getenv('WORKSPACE'), 'TestCases',
-                                                                               'generate_all_commands_list',
+        ret_val = [vars(x) for x in xml_parser.generate_all_commands_list(join(self.xmls_path,
                                                                                'multi_commands_one_element.xml'))]
         self.assertEqual(ret_val, [vars(x) for x in self.multi_commands_one_element]), \
             'test_generate_all_commands_list_one_command_one_element'
 
     def test_generate_all_commands_list_multi_commands_multi_elements(self):
-        ret_val = [vars(x) for x in xml_parser.generate_all_commands_list(join(getenv('WORKSPACE'), 'TestCases',
-                                                                               'generate_all_commands_list',
-                                                                               'multi_commands_multi_elements.xml'))]
+        ret_val = [vars(x) for x in xml_parser.generate_all_commands_list(join(self.xmls_path,
+                                                                          'multi_commands_multi_elements.xml'))]
         self.assertEqual(ret_val, [vars(x) for x in self.multi_commands_multi_elements]), \
             'test_generate_all_commands_list_multi_commands_multi_elements'
