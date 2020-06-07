@@ -7,9 +7,8 @@ class Test(unittest.TestCase):
         pass
 
     def test_usage_pattern_empty_list(self):
-        with self.assertRaises(Exception) as context:
-            Command('#d', 'define_variable', [])
-        self.assertEqual(type(context.exception), TypeError), 'test_usage_pattern_empty_list'
+        with self.assertRaises(TypeError):
+            Command('#d', 'define_variable', []), 'test_usage_pattern_empty_list'
 
     def test_usage_pattern_basic_types(self):
         int_type = Command('#f', 'find_value', [int])
