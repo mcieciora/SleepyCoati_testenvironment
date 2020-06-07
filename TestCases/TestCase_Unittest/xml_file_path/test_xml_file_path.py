@@ -5,6 +5,7 @@ from app.Parser import Parser
 
 class Test(unittest.TestCase):
     def setUp(self) -> None:
+        print('getenv: ', getenv('WORKSPACE'))
         self.xml_file_path_directory = path.join(getenv('WORKSPACE'), 'TestCases', 'TestCase_Unittest', 'xml_file_path')
 
     def test_xml_file_path_relative_path(self):
@@ -13,6 +14,7 @@ class Test(unittest.TestCase):
             'test_xml_file_path_relative_path'
 
     def test_xml_file_path_absolute_path(self):
+        abc = path.join(self.xml_file_path_directory, 'commands.xml')
         parser = Parser('empty.co', path.join(self.xml_file_path_directory, 'commands.xml'))
         self.assertEqual(parser.xml_file_path, path.join(self.xml_file_path_directory, 'commands.xml')), \
             'test_xml_file_path_absolute_path'
@@ -34,6 +36,6 @@ class Test(unittest.TestCase):
 
     def test_xml_file_path_double_dot(self):
         chdir('directory')
-        parser = Parser('empty.co', '../empty.xml')
+        parser = Parser('empty.co', '../commands.xml')
         self.assertEqual(parser.xml_file_path, path.join(self.xml_file_path_directory, 'commands.xml')), \
             'test_xml_file_path_double_dot'
