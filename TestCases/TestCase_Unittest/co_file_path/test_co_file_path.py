@@ -3,7 +3,6 @@ import unittest
 from app.Parser import Parser
 
 
-@unittest.skipIf(getenv('scope') == 'smoke', 'Skipping {}'.format(__file__))
 class Test(unittest.TestCase):
     def setUp(self) -> None:
         self.env = getenv('WORKSPACE')
