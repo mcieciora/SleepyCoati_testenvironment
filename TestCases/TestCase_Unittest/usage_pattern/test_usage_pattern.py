@@ -7,8 +7,7 @@ class Test(unittest.TestCase):
         pass
 
     def test_usage_pattern_empty_list(self):
-        with self.assertRaises(TypeError):
-            Command('#d', 'define_variable', []), 'test_usage_pattern_empty_list'
+        self.assertRaises(TypeError, Command('#d', 'define_variable', [])), 'test_usage_pattern_empty_list'
 
     def test_usage_pattern_basic_types(self):
         int_type = Command('#f', 'find_value', [int])
@@ -22,4 +21,4 @@ class Test(unittest.TestCase):
         int_str_types = Command('#g', 'get_value', [int, str])
         self.assertEqual([int, str], int_str_types.usage_pattern), 'test_usage_pattern_mixed_types int_str_type'
         bool_int = Command('#g', 'get_value', [bool, int])
-        self.assertEqual([int, str], bool_int.usage_pattern), 'test_usage_pattern_mixed_types, bool_int_type'
+        self.assertEqual([bool, int], bool_int.usage_pattern), 'test_usage_pattern_mixed_types, bool_int_type'
